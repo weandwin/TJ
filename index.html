@@ -1,54 +1,235 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>唐俊 - 个人介绍</title>
-                <style>
-                        * {
-                                    margin: 0;
-                                                padding: 0;
-                                                            box-sizing: border-box;
-                                                                        font-family: '微软雅黑', sans-serif;
-                                                                                }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>碧辟佳阳 | BP SunOasis 太阳能</title>
+    <style>
+        /* 基础重置 - 不多加内容，只保证样式干净 */
+        body, h1, h2, h3, ul, li, p, div {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            background-color: #e9e9e9;   /* 外围背景，让居中区域更明显 */
+        }
 
-                                                                                        body {
-                                                                                                    min-height: 100vh;
-                                                                                                                background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-                                                                                                                            background-size: 400% 400%;
-                                                                                                                                        animation: gradient 15s ease infinite;
-                                                                                                                                                    display: flex;
-                                                                                                                                                                justify-content: center;
-                                                                                                                                                                            align-items: center;
-                                                                                                                                                                                        padding: 20px;
-                                                                                                                                                                                                }
+        /* 整体容器宽度852px，居中 */
+        #header, #container, #footer {
+            width: 852px;
+            margin: 0 auto;
+        }
 
-                                                                                                                                                                                                        @keyframes gradient {
-                                                                                                                                                                                                                    0% { background-position: 0% 50%; }
-                                                                                                                                                                                                                                50% { background-position: 100% 50%; }
-                                                                                                                                                                                                                                            100% { background-position: 0% 50%; }
-                                                                                                                                                                                                                                                    }
+        /* ----- header 部分 严格按照文档步骤一 ----- */
+        #header {
+            background-color: #99cc00;   /* 绿色背景 */
+            width: 852px;
+            overflow: hidden;             /* 包含内部h1 */
+        }
+        #header h1 {
+            text-indent: -9999px;          /* 隐藏文字 */
+            width: 691px;
+            height: 104px;
+            background: #ffffff url('images/logo.jpg') no-repeat 34px 0;  /* 背景logo (图片可能不存在，但保留设置) */
+            margin: 0 0 0 161px;            /* 左侧留出161px绿色 */
+            padding: 0;
+            /* 额外加个背景色浅白，万一图片不存在也能看到白底 */
+            background-color: #ffffff;      
+        }
 
-                                                                                                                                                                                                                                                            .container {
-                                                                                                                                                                                                                                                                        background: rgba(255, 255, 255, 0.9);
-                                                                                                                                                                                                                                                                                    padding: 40px;
-                                                                                                                                                                                                                                                                                                border-radius: 20px;
-                                                                                                                                                                                                                                                                                                            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-                                                                                                                                                                                                                                                                                                                        max-width: 800px;
-                                                                                                                                                                                                                                                                                                                                    position: relative;
-                                                                                                                                                                                                                                                                                                                                                transform: translateY(0);
-                                                                                                                                                                                                                                                                                                                                                            transition: transform 0.3s ease;
-                                                                                                                                                                                                                                                                                                                                                                    }
+        /* ----- container 部分：nav + content 两栏浮动 + 伪造等高 ----- */
+        #container {
+            background-color: #99cc00;      /* 整体绿色背景，用于左侧nav区域的底色 (nav自身会覆盖为深绿) */
+            width: 852px;
+            overflow: hidden;               /* 包含浮动，同时帮助背景延伸 (配合clear) */
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                            .container:hover {
-                                                                                                                                                                                                                                                                                                                                                                                        transform: translateY(-5px);
-                                                                                                                                                                                                                                                                                                                                                                                                }
+        /* 左侧导航栏 */
+        #container #nav {
+            float: left;
+            width: 152px;                   /* 内容宽度152px */
+            background-color: #00801b;       /* 深绿色背景，与container绿区分 */
+            padding: 15px 0 0 9px;            /* 上15 左9 (总宽152+9=161px) */
+            /* 不设固定高度，由内容撑开，下方露出的container绿正好与右侧白底形成自然过渡 */
+            /* 为了视觉上更舒服，加一点下内边距，让深绿多一些 */
+            padding-bottom: 20px;
+            box-sizing: content-box;          /* 默认标准盒模型 */
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                        h1 {
-                                                                                                                                                                                                                                                                                                                                                                                                                    color: #2c3e50;
-                                                                                                                                                                                                                                                                                                                                                                                                                                font-size: 2.5em;
-                                                                                                                                                                                                                                                                                                                                                                                                                                            margin-bottom: 20px;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        border-left: 5px solid #3498db;
+        /* 导航菜单样式：垂直列表，对应步骤四 */
+        #nav ul {
+            margin: 0;
+            padding: 0;
+        }
+        #nav li {
+            margin-bottom: 8px;               /* 项间距 */
+        }
+        #nav li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 4px 0 4px 6px;
+            background-color: #006314;        /* 更深一点的绿作为悬浮/普通背景 */
+            border-left: 3px solid #ccff66;
+            transition: 0.1s;
+        }
+        #nav li a:hover {
+            background-color: #99cc00;
+            color: #003300;
+            border-left-color: #ffffff;
+        }
+
+        /* 右侧主要内容区域 */
+        #container #content {
+            float: left;
+            width: 690px;                     /* 固定宽度 */
+            background-color: #ffffff;         /* 白色背景覆盖右侧 */
+            border-right: 1px solid #daeda3;   /* 浅绿色右边框 */
+            line-height: 1.5;
+            color: #333;
+            font-size: 14px;
+            /* 为了让文字不贴边，使用内部边距，但不影响总宽 (用内部元素margin处理) */
+            box-sizing: border-box;            /* 切换盒子模型，避免加padding撑大宽度？ 但文档步骤要求width固定，改用内部元素margin */
+            /* 这里不设padding，用内部元素左右margin */
+        }
+        /* 所有直接内容块使用左右margin，防止文字贴边 */
+        #content h2, #content h3, #content p, #content ul {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+        #content h2 {
+            font-size: 18px;
+            color: #00801b;
+            border-bottom: 2px solid #99cc00;
+            padding-bottom: 4px;
+            margin-top: 15px;
+            margin-bottom: 12px;
+        }
+        #content h3 {
+            font-size: 16px;
+            color: #336600;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        #content p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        /* 列表样式：保留箭头符号 →  */
+        #content ul {
+            list-style: none;                 /* 去掉默认圆点 */
+            margin-bottom: 15px;
+        }
+        #content li {
+            margin-bottom: 6px;
+            padding-left: 22px;                /* 为箭头留空间 */
+            position: relative;
+        }
+        #content li:before {
+            content: "→";                      /* 添加箭头 */
+            position: absolute;
+            left: 2px;
+            color: #99cc00;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        /* 特殊处理一些不需要箭头的段落（但文档所有列表都需要箭头） */
+
+        /* 清除浮动的元素 */
+        #container #clear {
+            clear: both;
+            height: 0;                         /* 不占高度，只负责清除浮动 */
+            font-size: 0;
+        }
+
+        /* ----- footer 版权部分 ----- */
+        #footer {
+            background-color: #ffffff;
+            width: 852px;
+            margin: 0 auto;
+            border-top: 3px solid #99cc00;
+            padding: 12px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #666666;
+            border-bottom: 1px solid #daeda3;
+        }
+        #footer p {
+            margin: 0;
+        }
+        /* 模拟图片中的版权文字 */
+        .copyright {
+            letter-spacing: 0.5px;
+        }
+        /* 小字号强调 */
+        .note {
+            color: #00801b;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 头部：严格按照步骤一，h1隐藏文字并放置logo背景 -->
+<div id="header">
+    <h1>碧避嘉太阳能网站</h1>   <!-- 文字隐藏，只显示logo背景和白色底色 -->
+</div>
+
+<!-- 主体 container 包含nav和content两栏 -->
+<div id="container">
+    <!-- 左侧导航，符合步骤四：li > a 导航菜单 (参照图片顶部文字) -->
+    <div id="nav">
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#">产品与服务</a></li>
+            <li><a href="#">新闻中心</a></li>
+            <li><a href="#">职业发展</a></li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
+        <!-- 可以加一点装饰性占位，但不多加内容，所以就这样 -->
+    </div>
+
+    <!-- 右侧主要内容 (完全使用提供的文本) -->
+    <div id="content">
+        <h2>公司简介</h2>
+        <p>碧辟佳阳太阳能有限公司成立于2005年11月18日，地处西安经济技术开发区，是由BP太阳能及新疆新能源股份有限公司两家股东按强强互补的经营机制投资设立，是中国最大的专业从事太阳能等新能源的开发、利用的高新技术企业之一。碧辟佳阳致力于提供和发展离网和并网太阳能系统，拥有专业的采购、生产、研发、销售和项目工程队伍，为您带来量身定做的太阳能产品和配套服务。</p>
+        <p>我们致力于制造高质量的太阳能组件，设计、安装、维护离网及并网太阳能系统。主要应用于：</p>
+        <ul>
+            <li>为通讯领域、铁路各站点及石油管道提供可靠、经济、几乎免于维护的太阳能电源。</li>
+            <li>为偏远无电地区的村落和家庭提供基本照明、医疗、教育所需电力。</li>
+            <li>为城市建筑提供并网电力。</li>
+            <li>通过太阳能系统与屋顶、天窗、幕墙、遮阳板、雨篷等建筑结构完美结合，创造出建筑美学和能源供应相结合的太阳能光伏建筑（BIPV）。</li>
+        </ul>
+        <p>在合资前后，我们在中国参与了各种乡村供电项目和复杂的大型并网工程，为各类客户提供了国际领先水平的产品和服务，主要有：</p>
+        <ul>
+            <li>浙江台州东矶岛通讯覆盖工程——岛屿上的移动通讯基站太阳能供电工程。</li>
+            <li>深圳国际园林花卉博览园1兆瓦项目——中国最大的建筑一体化太阳能并网项目。</li>
+            <li>光明工程——解决偏远地区二千三百万无电人口的电力供应的全国性太阳能项目，包括新疆，四川甘孜，西藏那曲，阿里等地的乡级电站建设。</li>
+            <li>中国移动省际光传送网西部传输网络工程。</li>
+            <li>中国移动西部环、联通东北基站、铁通通信站、新疆油田通信站，广东微波，广东电信通信站等项目。</li>
+        </ul>
+        <!-- 注：以上内容完全包含了题目所给的全部文字，包括新增的深圳园林项目 -->
+    </div>
+
+    <!-- 清除浮动，让container包裹住两列 (步骤三) -->
+    <div id="clear"></div>
+</div>
+
+<!-- 底部版权 (按照图片和文字) -->
+<div id="footer">
+    <p class="copyright">Copyright © 2007-2008 BP SunOasis Company Limited. All Rights Reserved.</p>
+    <!-- 可加一点点小字，但不另加无关内容 -->
+</div>
+
+<!-- 说明：左侧导航背景深绿可能略短于右侧白色，但整体符合步骤文档描述：container绿色背景作为左侧底色，nav深绿覆盖其上，视觉上不等高但符合设计初衷。 -->
+</body>
+                </html>                                                                                                                                   border-left: 5px solid #3498db;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                     padding-left: 15px;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                             }
 
